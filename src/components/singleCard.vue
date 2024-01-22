@@ -16,7 +16,7 @@ export default {
 </script>
 
 <template>
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 15rem;">
         <img :src=" card.card_images[0].image_url" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">{{ card.name }}</h5>

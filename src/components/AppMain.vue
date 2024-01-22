@@ -44,7 +44,7 @@ export default {
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-3 text-center" v-for=" (elem,i) in this.store.cardLists" :key="i">
+                        <div class="col-2 text-center mx-3 " v-for=" (elem,i) in this.store.cardLists" :key="i">
                             <singleCard :card = "elem"/>
                         </div>                        
                     </div>
