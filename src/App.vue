@@ -4,7 +4,7 @@ import AppMain from './components/AppMain.vue';
 import AppFooter from './components/AppFooter.vue';
 import axios from 'axios';
 // importo store 
-import {store} from './store.js';
+import {store} from './store';
 
 export default {
     data() {

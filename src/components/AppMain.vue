@@ -40,11 +40,11 @@ export default {
                 <div class="col">
                     <div class="row">
                         <div class="col bg-black fs-4 text-white fw-bold">
-                            FOUND 39 CARDS
+                            FOUND CARDS {{this.store.cardLists.length }}
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-2 text-center mx-3 " v-for=" (elem,i) in this.store.cardLists" :key="i">
+                        <div class="col-2 text-center mx-3 " v-for=" (elem,i) in this.store.cardLists" :key="elem.name+i">
                             <singleCard :card = "elem"/>
                         </div>                        
                     </div>

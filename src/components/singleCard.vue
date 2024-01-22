@@ -1,5 +1,6 @@
 <script>
 
+
 export default {
     data() {
         return {
@@ -7,12 +8,13 @@ export default {
         };
     },
     methods: {
-
+        
     },
     props: {
         card : Object,
     },
 }
+
 </script>
 
 <template>
