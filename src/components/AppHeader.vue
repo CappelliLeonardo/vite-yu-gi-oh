@@ -13,7 +13,15 @@ export default {
 
 <template>
     <header>
-        HEADER
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h1>
+                        Yu-Gi-Oh
+                    </h1>
+                </div>
+            </div>
+        </div>
     </header>
 </template>
 
