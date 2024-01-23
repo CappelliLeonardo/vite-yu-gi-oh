@@ -19,20 +19,16 @@ export default {
 
     },  
     methods: {
-        showCard(){
-            axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0',
-            {params:{
-            archetype: store.selectedCard,
-        }}).then((response)=>{
-            console.log(response)
-            this.store.cardLists = response.data.data
-        })
-        }
+        
     },
 
     mounted(){
         
-        this.showCard(),
+        axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0').then((response)=>{
+            console.log(response)
+            this.store.cardLists = response.data.data
+        }),
+        
         // effetuo la chiamata ad axios
         axios.get('https://db.ygoprodeck.com/api/v7/archetypes.php').then((response)=>{
             console.log(response.data)

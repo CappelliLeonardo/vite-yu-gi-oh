@@ -1,5 +1,7 @@
 <script>
 import {store} from '../store';
+import axios from 'axios';
+
 
 // importazione singlecard
 import singleCard from './singleCard.vue';
@@ -10,7 +12,19 @@ export default {
         };
     },
     methods: {
-    
+        showCard(){
+            let myUrl = 'https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0';
+
+            if(this.store.selectedCard != 0){
+                myUrl += '?archetype='+store.selectedCard;
+            }
+
+
+            axios.get(myUrl).then((response)=>{
+            console.log(response)
+            this.store.cardLists = response.data.data
+        })
+        }
     },
     components: {
         singleCard,
@@ -28,8 +42,15 @@ export default {
             <div class="row">
                 <div class="col-4">
                     <form class="py-3">
-                        <select  class="form-select" v-model="store.selectedCard" @click= "$emit('activeCard')" aria-label="Default select example">
-                            <option  :value="elem.archetype_name" v-for="(elem ,i) in store.archetypes" :key="i" @click="store.selectedCard = elem.archetype_name " >
+                        <select  class="form-select"
+                        v-model="store.selectedCard"
+                        @change= "showCard()" aria-label="Default select example">
+                            <option value="0">
+                                Scegli il tuo archetipo
+                            </option>
+                            <option
+                                :value="elem.archetype_name"
+                                v-for="(elem ,i) in store.archetypes" :key="i">
                                 {{elem.archetype_name}}
                             </option>
                         </select>
