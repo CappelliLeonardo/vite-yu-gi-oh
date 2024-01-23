@@ -1,5 +1,6 @@
 <script>
 import {store} from '../store';
+
 // importazione singlecard
 import singleCard from './singleCard.vue';
 export default {
@@ -9,10 +10,14 @@ export default {
         };
     },
     methods: {
-
+    
     },
     components: {
         singleCard,
+    },
+
+    mounted(){
+        
     }
 }
 </script>
@@ -21,18 +26,13 @@ export default {
     <main>
         <div class="container">
             <div class="row">
-                <div class="col">
+                <div class="col-4">
                     <form class="py-3">
-                        <div class="btn-group">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Alien
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Alien</a></li>
-                                <li><a class="dropdown-item" href="#">Human</a></li>
-                                <li><a class="dropdown-item" href="#">Cyborg</a></li>
-                            </ul>
-                        </div>
+                        <select  class="form-select" v-model="store.selectedCard" @click= "$emit('activeCard')" aria-label="Default select example">
+                            <option  :value="elem.archetype_name" v-for="(elem ,i) in store.archetypes" :key="i" @click="store.selectedCard = elem.archetype_name " >
+                                {{elem.archetype_name}}
+                            </option>
+                        </select>
                     </form>
                 </div>
             </div>
@@ -40,7 +40,7 @@ export default {
                 <div class="col">
                     <div class="row">
                         <div class="col bg-black fs-4 text-white fw-bold">
-                            FOUND CARDS {{this.store.cardLists.length }}
+                            FOUND {{this.store.cardLists.length }} CARDS 
                         </div>
                     </div>
                     <div class="row">

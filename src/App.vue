@@ -19,14 +19,26 @@ export default {
 
     },  
     methods: {
-
-    },
-
-    mounted(){
-        axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0').then((response)=>{
+        showCard(){
+            axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0',
+            {params:{
+            archetype: store.selectedCard,
+        }}).then((response)=>{
             console.log(response)
             this.store.cardLists = response.data.data
         })
+        }
+    },
+
+    mounted(){
+        
+        this.showCard(),
+        // effetuo la chiamata ad axios
+        axios.get('https://db.ygoprodeck.com/api/v7/archetypes.php').then((response)=>{
+            console.log(response.data)
+            this.store.archetypes = response.data
+        })
+        
     }
 }
 </script>
@@ -35,7 +47,7 @@ export default {
     
     <AppHeader />
 
-    <AppMain />
+    <AppMain @activeCard = "showCard()"/>
 
     <AppFooter />
 
